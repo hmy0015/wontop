@@ -1,0 +1,508 @@
+<div id="skipnav"><a href="#maincontent">Skip to main content</a></div>
+
+    <!-- 네비게이션 -->
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+        <div class="container">
+            <!--로고그림-->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="#page-top"><%=image_tag "wku2.png"%></a>
+                
+            </div>
+            
+            <!-- 네비게이션 오른쪽 바 -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="home">
+                        <a href="#page-top">홈</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#iljung">축제일정</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#lineup">라인업</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#nanjang">난장정보</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#jujum">주점정보</a>
+                    </li>
+                    
+                    <li class="page-scroll">
+                        <a href="#contact">Won Talk</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- 여기가지 네비 오른쪽 바 -->
+        </div>
+        <!-- 로고 + 오른쪽 바 -->
+    </nav>
+    <!--네비게이션 끝-->
+
+    <!-- 헤더  -->
+    <header>
+    
+    </header>
+
+    <!-- 축제 일정 -->
+    <section id="iljung">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2><img src="/img/flo2.png"/>축제일정<img src="/img/flo2.png"/></h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class="iljung-div">
+                    <div class="iljung-date-div"><p class="btn btn1" rel="div1">5.23(화)</p></div>
+                    <div class="iljung-date-div"><p class="btn btn1" rel="div2">5.24(수)</p></div>
+                    <div class="iljung-date-div"><p class="btn btn1" rel="div3">5.25(목)</p></div>
+                </div>
+                <div class="iljung2-div">
+                    <div id="div1"  class="iljung-iljung-div">
+                        <%= image_tag "schedule1.jpg"%>
+                    </div>
+                    <div id="div2"  class="iljung-iljung-div">
+                        <%= image_tag "schedule2.jpg"%>
+                    </div>
+                    <div id="div3"  class="iljung-iljung-div">
+                        <%= image_tag "schedule3.jpg"%>
+                    </div>
+                </div>
+            </div>  
+        </div>
+    </section>
+
+    <!-- 라인 업 -->
+    <section class="success" id="lineup">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2><img src="/img/flo2.png"/>라인업<img src="/img/flo2.png"/></h2>
+                    <hr class="star-light">
+                </div>
+            </div>
+            <div class="row">
+                <div class="lineup-div">
+                    <div class="lineup-date-div"><p class="btn btn2" rel="div1-2">5.23(화)</p></div>
+                    <div class="lineup-date-div"><p class="btn btn2" rel="div2-2">5.24(수)</p></div>
+                    <div class="lineup-date-div"><p class="btn btn2" rel="div3-2">5.25(목)</p></div>
+                </div>
+                <div class="lineup2-div">
+                    <div id="div1-2"  class="lineup-lineup-div">
+                       <a href="https://www.facebook.com/wkuchonghak/videos/1914813748790041/" target="_blank"><%= image_tag "day1.jpg"%></a> 
+                    </div>
+                    <div id="div2-2"  class="lineup-lineup-div">
+                        <a href="https://www.facebook.com/wkuchonghak/videos/1914813748790041/" target="_blank"><%= image_tag "day2.jpg"%></a>
+                    </div>
+                    <div id="div3-2"  class="lineup-lineup-div">
+                        <a href="https://www.facebook.com/wkuchonghak/videos/1914813748790041/" target="_blank"><%= image_tag "day3.jpg"%></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--난장섹션임.-->
+    <section class="success2" id="nanjang">
+    <div class="container">
+      <div class="row">
+          <div class="col-lg-12 text-center">
+              <h2><img src="/img/flo2.png"/>난장정보<img src="/img/flo2.png"/></h2>
+              <hr class="star-light">
+          </div>
+         <div id="map2"></div>
+         
+         <div class="nanjang-div">
+            <div class="nanjang3-div">
+            <% for i in 0..3 %>
+              <% for j in 3*i+1..3*i+3 %>
+                  <div id="div<%= j%>-3"  class="nanjang3-div">
+                      <div class="nanjang-img">
+                        <% unless Nanjang.find(j).image == nil%>
+                          <%= image_tag (Nanjang.find(j).image) %>
+                        <% end %>
+                      </div>
+                      <div class="nanjang-name-div">
+                        <span><%= Nanjang.find(j).name%></span>
+                      </div>
+                      <div class="nanjang-introduce-div">
+                        <span>소개</span>
+                        <%= Nanjang.find(j).introduce%>
+                      </div>
+                      
+                    </div>
+              <% end %>
+            <% end %>
+                
+          </div>
+            <% for i in 0..3 %>
+              <div class="nanjang-row">
+                  <% for j in 3*i+1..3*i+3 %>
+                    <div class="nanjang2-div">
+                      <p class="btn btn3" rel="div<%=j%>-3" style="color:<%=Nanjang.find(j).color%>; border-color:<%=Nanjang.find(j).color%>; min-width:90px;border-width:1.3px; padding:5px 0px" value="<%=j%>">
+                        <%= Nanjang.find(j).name%>
+                      </p>
+                    </div>
+              
+                  <% end %>
+              </div>
+            <% end %>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+    
+<!--주점섹션임-->
+    <section class="success3" id="jujum">
+    <div class="container">
+      <div class="row">
+          <div class="col-lg-12 text-center">
+              <h2><img src="/img/flo2.png"/>주점정보<img src="/img/flo2.png"/></h2>
+              <hr class="star-light">
+          </div>
+      </div>
+      <div class="row">
+        <!--지도 섹션임-->
+        <div id="map"></div>
+        <!-- 주점정보 -->
+        
+        <div class="acc">
+          <div class="like-reset">좋아요 수는 매일 초기화됩니다.</div>
+          <% @jujums.each do |j| %>
+            <% unless j.id == 24 %>
+              <div class="accordion" id="acc-panel<%=j.id%>-btn">
+                <div class="acc-name"><%= j.name%></div>
+                <div class="acc-like-down">
+                    <button class="like-btn"value="<%= j.id%>"><img src="/img/like.png"/></button>              
+                    <span class="like-count"id="<%= j.id%>-count" value="<%= j.id%>"><%=@merong_count[j.id]%></span>
+                    &#9662;
+                </div>
+              </div>
+              <div class="panel" id="acc-panel<%= j.id%>" >
+                
+                <input type="number" id="<%= j.id%>-hidden"value="<%=@merong_count[j.id]%>" style="display:none;"/>
+                <input type="hidden" value="<%= @merong_no[j.id]%>" id="<%=j.id%>-no"/>
+                <% unless j.image == nil %>
+                  <%=image_tag j.image %>
+                <% end %>
+                <div class="panel-name-div">
+                  <span><%= j.name %></span>
+                </div>
+                <div class="panel-theme-div">
+                  <span>테마</span>
+                  <%= j.theme %>
+                </div>
+                <div class="panel-introduce-div">
+                  <span>소개</span>
+                  <%= j.introduce.html_safe %>
+                </div>
+                <div class="panel-menu-div"> 
+                  <span>메뉴</span>
+                  <% unless j.menu == nil%>
+                    <%=image_tag j.menu %>
+                  <% end %>
+                </div>
+              </div>
+            <% else %>
+              <div class="accordion" id="acc-panel<%=j.id%>-btn">
+                <div class="acc-name"><%= j.name%></div>
+                <div class="acc-like-down">
+                    <button class="like-btn"value="<%= j.id%>"><img src="/img/like.png"/></button>              
+                    <span class="like-count"id="<%= j.id%>-count" value="<%= j.id%>"><%=@merong_count[j.id]%></span>
+                    &#9662;
+                </div>
+              </div>
+              <div class="panel" id="acc-panel<%= j.id%>" >
+                
+                <input type="number" id="<%= j.id%>-hidden"value="<%=@merong_count[j.id]%>" style="display:none;"/>
+                <input type="hidden" value="<%= @merong_no[j.id]%>" id="<%=j.id%>-no"/>
+                <% unless j.image == nil %>
+                  <%=image_tag j.image %>
+                <% end %>
+                <div class="panel-name-div">
+                  <span><%= j.name %></span>
+                </div>
+                <div class="panel-theme-div">
+                  <span>테마</span>
+                  <%= j.theme %>
+                </div>
+                <div class="panel-introduce-div">
+                  <span>소개</span>
+                  <%= j.introduce.html_safe %>
+                </div>
+                <%= image_tag '/img/muse.jpg'%>
+                <div class="panel-menu-div"> 
+                  전주연합댄스팀 뮤즈(Muse)
+                </div>
+              </div>
+            <% end %>
+            
+          <% end %>
+          
+        </div>
+    </div>
+    </section>
+
+
+
+    <!-- 원 토크(won talk) -->
+    <section id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 id="wontalk"><img src="/img/flo2.png"/>Won Talk<img src="/img/flo2.png"/></h2>
+                    <hr id="wontalr-star" class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                <!-- sns 기능 -->
+                <div id="lv-container" data-id="city" data-uid="MTAyMC8yODU2OC81MTM5">
+                <script type="text/javascript">
+            		window.livereOptions = {
+            			refer: 'wontop.net'
+            		};
+                (function(d, s) {
+                var j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') { return; }
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+                
+                e.parentNode.insertBefore(j, e);
+                })(document, 'script');
+                </script>
+                </div>
+                <!-- 시티 설치 코드 끝 -->
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- 풋터 -->
+    <footer class="text-center">
+        <div class="footer-above">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-md-4">
+                    </div>
+                    <div class="footer-col col-md-4">
+                      <h3>컴퓨터를 모르는 학생들이 <br>프로그래밍 교육을 통해 원하는 <br>IT서비스를 직접 런칭한다.</h3>
+                      <a class="likelionlink" href="https://likelion.net/" target="_blank"><img class="btn-social btn-outline" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKFJn-t_y71BDQjbKjGormvFqlJM2HKHcPBjNhA-pnrp88XHLQ" alt="cha" /></a>
+                      <h3>멋쟁이사자처럼 at 원광대학교</h3>
+                        <h3>Developer</h3>
+                        <div class="fb-like" data-href="http://www.wontop.net" data-layout="standard" data-action="like" data-size="small" data-show-faces="false" data-share="true" data-colorscheme="light"></div>
+                        <ul class="list-inline">
+                            <li>
+                                <%= image_tag("nam.jpg", :class => "btn-social btn-outline")%>
+                                 <br>남상현
+                            </li>
+                            <li>
+                                <%= image_tag("cha.jpg", :class =>"btn-social btn-outline")%>
+                                 <br>차건우
+                            </li>
+                            
+                            <li>
+                                <%= image_tag("myong.jpg", :class => "btn-social btn-outline")%>
+                                 <br>이명아
+                            </li>
+                            <li>
+                                <%= image_tag("park.jpg", :class => "btn-social btn-outline")%>
+                                 <br>박진철
+                            </li>
+                            <li>
+                                <%= image_tag("hwang.jpg", :class =>"btn-social btn-outline")%>
+                                 <br>황민영
+                            </li>
+                            <li>
+                                <%= image_tag("ahn.jpg", :class =>"btn-social btn-outline")%>
+                                 <br>안지연
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                         <a href="https://likelion.net/" target="_blink" style="color:#464646">&copy; Likelion at WKU 2017</a>
+                         <br>
+                         <!--광고 자바스크립트-->
+                         <script type="text/javascript">
+                          (function(cl,i,c,k,m,o,n){m=cl.location.protocol+c;o=cl.referrer;m+='&mon_rf='+encodeURIComponent(o);
+                          n='<'+i+' width="320" height="100" allowtransparency="true" src="'+m+'" frameborder="0" scrolling="no"></'+i+'>';cl.write(n);
+                          })(document,'iframe','//mtab.clickmon.co.kr/pop/mcpi_roll_320_100.php?mer=CM_M_1033938%7CCM_M_1032702%7CCM_M_1033940%7CCM_M_1033942%7CCM_M_1033961%7CCM_M_1033998%7CCM_M_1034000%7C&PopAd=CM_A_1034148');
+                          </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=da11ef6f3596510174ab5e0c45bb6759"></script>
+<!--<script type="text/javascript" src="//apis.daum.net/maps/maps3.js?apikey=ec6be4310dd318eb66a8e463fd384cd1"></script>-->
+
+<script>
+  
+//좋아요
+ $(".like-btn").click(function(){
+        var id = this.value;
+        var ho = parseInt($("#"+id+"-hidden").val());
+        var no = $("#"+id+"-no").val();
+        var he = ho+1;
+            if(no==0){
+               $.ajax({
+                    url:'/home/ho',
+                    method:"get",
+                    data:{"jujum_id":id},
+                    success:function(data){
+                        $("#"+id+"-count").text(he);
+                    },
+                    error:function(){
+                     }
+                })
+            }
+        });
+  
+  
+    var mapContainer = document.getElementById('map2'), // 지도를 표시할 div 
+        mapOption = { 
+            center: new daum.maps.LatLng(35.967797, 126.956795), // 지도의 중심좌표
+            level: 1 // 지도의 확대 레벨
+        };  
+    
+    var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+    
+    var positions2 = [  // 마커의 위치
+      {
+         title: '몽수룸', 
+         latlng: new daum.maps.LatLng(35.968017, 126.956940),
+         sw: new daum.maps.LatLng(35.967977, 126.956896), // 사각형 영역의 남서쪽 좌표
+         ne: new daum.maps.LatLng(35.968055, 126.956990),
+         color:"#f09590"
+      },
+      {
+         title: '온에어', 
+         latlng: new daum.maps.LatLng(35.967922, 126.956897),
+         sw: new daum.maps.LatLng(35.967879, 126.956853), // 사각형 영역의 남서쪽 좌표
+         ne: new daum.maps.LatLng(35.967962, 126.956951),
+         color:"#95A5C3"
+      },
+      {
+        title: 'WITH', 
+        latlng: new daum.maps.LatLng(35.967830, 126.956855),
+         sw: new daum.maps.LatLng(35.967782, 126.956807), // 사각형 영역의 남서쪽 좌표
+         ne: new daum.maps.LatLng(35.967865, 126.956910),
+         color:"#7F9FA4"
+      },
+      {  
+        title: '그린나래', 
+        latlng: new daum.maps.LatLng(35.967726, 126.956835),
+        sw: new daum.maps.LatLng(35.967685, 126.956782), // 사각형 영역의 남서쪽 좌표
+        ne: new daum.maps.LatLng(35.967764, 126.956887),
+        color:"#deb29e"
+      },
+      {
+        title: '원불교학과', 
+        latlng: new daum.maps.LatLng(35.967635, 126.956790),
+        sw: new daum.maps.LatLng(35.967590, 126.956740), // 사각형 영역의 남서쪽 좌표
+        ne: new daum.maps.LatLng(35.967667, 126.956845),
+        color:"#bd9dc7"
+      },
+      {
+        title: '백두', 
+        latlng: new daum.maps.LatLng(35.967540, 126.956756),
+        sw: new daum.maps.LatLng(35.967490, 126.956700), // 사각형 영역의 남서쪽 좌표
+        ne: new daum.maps.LatLng(35.967575, 126.956814),          
+        color:"#e68b60"
+      },
+      {
+        title: '행정학과', 
+        latlng: new daum.maps.LatLng(35.968010, 126.956780),
+        sw: new daum.maps.LatLng(35.967974, 126.956735), // 사각형 영역의 남서쪽 좌표
+        ne: new daum.maps.LatLng(35.968050, 126.956840), 
+        color:"#de625b"
+      },
+      {
+        title: '원불교 대학생회', 
+        latlng: new daum.maps.LatLng(35.967920, 126.956744),
+        sw: new daum.maps.LatLng(35.967877, 126.956693), // 사각형 영역의 남서쪽 좌표
+        ne: new daum.maps.LatLng(35.967955, 126.956794), 
+        color:"#887b8f"
+      },
+      {
+        title: '소방행정학과', 
+        latlng: new daum.maps.LatLng(35.967820, 126.956700),
+        sw: new daum.maps.LatLng(35.967778, 126.956646), // 사각형 영역의 남서쪽 좌표
+        ne: new daum.maps.LatLng(35.967859, 126.956753), 
+        color:"#b5bf8e"
+      },
+      {
+        title: '여학생회', 
+        latlng: new daum.maps.LatLng(35.967720, 126.956670),
+        sw: new daum.maps.LatLng(35.967675, 126.956620), // 사각형 영역의 남서쪽 좌표
+        ne: new daum.maps.LatLng(35.967755, 126.956725), 
+        color:"#8db5b0"
+      },
+      {
+        title: 'GNC', 
+        latlng: new daum.maps.LatLng(35.967620, 126.956625),
+        sw: new daum.maps.LatLng(35.967570, 126.956570), // 사각형 영역의 남서쪽 좌표
+        ne: new daum.maps.LatLng(35.967655, 126.956680), 
+        color:"#c9a9ab"
+      },
+      
+      ]
+    
+    for(var i=0, len=positions2.length; i<len;i++){
+      
+       // 지도에 표시할 사각형을 생성합니다
+      var rectangleBounds = new daum.maps.LatLngBounds(positions2[i].sw, positions2[i].ne);
+      var rectangle = new daum.maps.Rectangle({
+          bounds: rectangleBounds, // 그려질 사각형의 영역정보입니다
+          strokeWeight: 4, // 선의 두께입니다
+          strokeColor: positions2[i].color, // 선의 색깔입니다
+          strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+          strokeStyle: 'solid', // 선의 스타일입니다
+          fillColor: positions2[i].color, // 채우기 색깔입니다
+          fillOpacity: 0.8 // 채우기 불투명도 입니다
+      });
+      rectangle.setMap(map); 
+      
+     
+    }
+    
+    for(var i=0, len=positions2.length; i<len;i++){
+      var customOverlay = new daum.maps.CustomOverlay({
+          position: positions2[i].latlng,
+          content: '<div class ="label" style="color:#000; border:none; border-radius:5px; background-color:#fff; opacity:0.7;"><span class="center">'+positions2[i].title+'</span></div>'
+      });
+      
+      // 커스텀 오버레이를 지도에 표시합니다
+      customOverlay.setMap(map);
+      
+    }
+    
+   
+</script>
+
+<!--구글 애널리틱스-->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-99641838-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
